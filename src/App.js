@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Swal from 'sweetalert2';
 
-const api = {
+const api = { 
   key: '84b8d82b44730ccbf18518b8d32d2963',
   baseUrl: 'https://api.openweathermap.org/data/2.5/',
 }
@@ -11,19 +11,19 @@ function App() {
 
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-
-  const Swal = require('sweetalert2')
-
+  
   const search = e => {
-    if(e.target.value === '') {
+    let input = e.target.value.length
+
+    if(input === '') {
       Swal.fire({
         icon: 'error',
         title: 'Oops... something went wrong',
-        text: 'Please enter the name of the city you are looking for',
-
-      })
+        text: 'Please enter the city you are looking for',
+      });
+      // return false;
     }
-    if (e.key === 'Enter') {
+    else if(e.key === 'Enter') {
       fetch(`${api.baseUrl}weather?q=${query}&units=metric&appid=${api.key}`)
         .then(res => res.json())
         .then(result => {
@@ -65,6 +65,7 @@ function App() {
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
+            required
           />
         </div>
 
