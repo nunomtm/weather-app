@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import Swal from 'sweetalert2';
 
 const api = { 
   key: '84b8d82b44730ccbf18518b8d32d2963',
@@ -13,17 +12,7 @@ function App() {
   const [weather, setWeather] = useState({});
   
   const search = e => {
-    let input = e.target.value.length
-
-    if(input === '') {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops... something went wrong',
-        text: 'Please enter the city you are looking for',
-      });
-      // return false;
-    }
-    else if(e.key === 'Enter') {
+    if(e.key === 'Enter') {
       fetch(`${api.baseUrl}weather?q=${query}&units=metric&appid=${api.key}`)
         .then(res => res.json())
         .then(result => {
