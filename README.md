@@ -1,3 +1,5 @@
+<img src="/screenShotWeatherBuddy.png">
+
 ## Weather Buddy
 
 The Weather Buddy app is where you can search the weather forecasted based on the city and time of your search. 
